@@ -1,5 +1,13 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  header(class="bg-primary py-5 mb-5")
+  div(class="container")
+    div(class="row")
+      each gen in genres
+        div(class="col-md-4 mb-5")
+          div(class="card h-100")
+            div(class="card-body")
+              h4(class="card-title")= gen.name
+            div(class="card-footer")
+              a(href="/genreView/"+gen.id class="btn btn-primary") Find Out More!
