@@ -1,0 +1,40 @@
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.infoBack {
+  background-color: #BBC2C9;
+}
+
+.infoBack p{
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.review_container {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.review {
+  background-color: #DBE3EB;
+  border: 1px;
+  text-align: justify;
+}
+
+header {
+  text-align: center;
+}
+
+header h4{
+  margin-top: 10px;
+}
+
+a {
+  color: #00B7FF;
+}
