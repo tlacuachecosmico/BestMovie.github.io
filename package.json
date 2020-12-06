@@ -5,8 +5,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "node ./bin/www",
-    "deploy": "npm build && gh-pages -d ./"
+    "deploy": "gh-pages -d ./"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",
