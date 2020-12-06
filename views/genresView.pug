@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  header(class="bg-primary py-5 mb-5")
+  div(class="container")
+    div(class="row")
+      each mov in movies.results
+        div(class="col-md-3 mb-5")
+          div(class="card h-100")
+            img(class="card-img-top" src="https://image.tmdb.org/t/p/w500/"+mov.poster_path alt="")
+            div(class="card-body")
+              h4(class="card-title")
+                | Title: 
+                = mov.original_title
+            div(class="card-footer")
+              a(href="/movieView/"+mov.id class="btn btn-primary") See more.
+    div(class="row")
+        div(class="col-md-2 mb-2")
+            - var backB=movies.page==1;
+            if !backB 
+                a(type="button" class="btn btn-primary" href="/genresView/"+genre+","+(movies.page-1)) Back
+        div(class="col-md-2 mb-2")
+            - var nextB=movies.page==movies.total_pages;
+            if !nextB
+                a(type="button" class="btn btn-primary" href="/genresView/"+genre+","+(movies.page+1)) Next

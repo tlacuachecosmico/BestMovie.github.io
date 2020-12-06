@@ -1,0 +1,79 @@
+extends layout
+
+block content
+  header(class="bg-primary py-5 mb-5")
+  div(class="container")
+    div(class="row")
+        div(class="col-md-6 mb-5")
+            div(class="card h-100")
+                if movie.poster_path!=null
+                    img(class="card-img-top" src="https://image.tmdb.org/t/p/w500/"+movie.poster_path alt="")
+        div(class="col-md-6 mb-5")
+            div(class="card h-100 infoBack")
+                p(class="card-text")
+                    strong   Title: 
+                    = movie.original_title
+                p(class="card-text")
+                    strong   Overview: 
+                    = movie.overview
+                p(class="card-text")
+                    strong   Release date: 
+                    = movie.release_date
+                p(class="card-text")
+                    strong   Runtime: 
+                    = movie.runtime
+                p(class="card-text")
+                    strong   Genres: 
+                    each gen in movie.genres
+                        = gen.name
+                        |   ,
+                p(class="card-text")
+                    strong   Vote average: 
+                    = movie.vote_average
+                p(class="card-text")
+                    strong   Vote count: 
+                    = movie.vote_count
+                form(action="/movieRating/"+movie.id method="POST")
+                    p(class="card-text")
+                        label
+                            strong   Rate:  
+                        input(type="text" name="value")
+                    button(type="submit" class="btn btn-primary") Rating
+    div(class="row")
+        div(class="col-md-6 mb-5")
+            h4 Trailer: 
+            each tra in trailer
+                if tra.site=='YouTube'
+                    iframe(class="embed-responsive" height="315" src="https://www.youtube.com/embed/"+tra.key)
+                    - break
+        div(class="col-md-6 mb-5")
+            div(id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel")
+                div(class="carousel-inner")
+                    each imag in images
+                        div(class="carousel-item active")
+                            img(class="d-block w-100" src="https://image.tmdb.org/t/p/w500/"+imag.file_path alt="")
+    div(class="row review_container")
+        each rev in reviews
+            div(class="col-md-12 mb-5 review")
+                div(class="input-group")
+                    if rev.avatar_path!=null
+                        img(alt="avatar" class="avatar" src="https://image.tmdb.org/t/p/w500/"+imag.file_path)
+                    else
+                        img(alt="avatar" class="avatar" src="/images/null_avatar.png")
+                    p Author: 
+                        = rev.author
+                p Review: 
+                    = rev.content
+    div(class="row")
+        h4 Similar movies: 
+    div(class="row")
+        each mov in movies.results
+            div(class="col-md-3 mb-5")
+                div(class="card h-100")
+                    img(class="card-img-top" src="https://image.tmdb.org/t/p/w500/"+mov.poster_path alt="")
+                    div(class="card-body")
+                    h4(class="card-title")
+                        | Title: 
+                        = mov.original_title
+                    div(class="card-footer")
+                        a(href="/movieView/"+mov.id class="btn btn-primary") See more.

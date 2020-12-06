@@ -2,6 +2,7 @@ extends layout
 
 block content
   header(class="bg-primary py-5 mb-5")
+    h4 Welcome to Best Movie!
   div(class="container")
     div(class="row")
       each gen in genres
@@ -10,4 +11,4 @@ block content
             div(class="card-body")
               h4(class="card-title")= gen.name
             div(class="card-footer")
-              a(href="/genreView/"+gen.id class="btn btn-primary") Find Out More!
+              a(href="/genresView/"+gen.id+",1" class="btn btn-primary") Find Out More!
